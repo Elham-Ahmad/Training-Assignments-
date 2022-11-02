@@ -1,0 +1,24 @@
+/* .top-div{
+    border: 2px solid red;
+} */
+.navbar{
+    /* border: 2px salmon; */
+    padding-bottom: 40px;
+}
+.container {
+    /* border: 2px solid white; */
+    margin-top: 25px;
+}
+.me-auto{
+    margin-left: 750px;
+}
+/* .midsection{ */
+    /* border: 2px solid yellow; */
+    /* height: 750px; */
+    /* width: 1259.33px; */
+/* } */
+.container-mid{
+    /* border: 2px solid green; */
+    height: 500px
+  
+}
