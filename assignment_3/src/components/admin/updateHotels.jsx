@@ -1,22 +1,30 @@
-import React from "react";
-import { Container } from "react-bootstrap";
+import React,{useState} from "react";
+import { Alert, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import UpdateHotel from "./updateHotel";
 
 const UpdateHotels = (props) => {
   const navigate = useNavigate();
+  const [index, setindex] = useState()
+  const [show,setShow] = useState(false)
+
 
   const updateHotel = (index) => {
-    <UpdateHotel index={props.index} updateHotelData={props.updateHotelData} />;
+    setShow(true)
+    setindex(index)
+    
 
-    navigate("/updateHotel");
+   // navigate("/updateHotel");
   };
 
   const handleDelete = (id) => {
-    // let index  = props.updateHotelData.map(function(e){
-    //   return e.id
-    // }).indexOf(id)
+
+    let index  = props.updateHotelData.map(function(e){
+      return e.id
+    }).indexOf(id)
+
+    console.log(index);
     // props.updateHotelData.splice(index,1)
   };
 
@@ -38,7 +46,7 @@ const UpdateHotels = (props) => {
           aria-controls="navbarNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
-        >
+          >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -64,7 +72,7 @@ const UpdateHotels = (props) => {
                   to="/updateHotels"
                   tabindex="-1"
                   aria-disabled="false"
-                >
+                  >
                   update Hotels
                 </Link>
               </li>
@@ -124,20 +132,22 @@ const UpdateHotels = (props) => {
                       className="btn btn-primary"
                       onClick={() => {
                         alert(index);
-                        updateHotel(index);
+                        updateHotel(element.index);
                         return;
                       }}
-                    >
-                      Update
+                      >
+                      UPDATE
                     </button>{" "}
                   </td>
                   <td>
                     {" "}
                     <button
                       className="btn btn-danger"
-                      onClick={handleDelete(element.index)}
-                    >
-                      Cancel
+                      onClick={()=>{
+                        alert(index)
+                        handleDelete(element.index)}}
+                      >
+                      DELETE
                     </button>{" "}
                   </td>
                 </tr>
@@ -146,6 +156,9 @@ const UpdateHotels = (props) => {
           </tbody>
         </table>
       </div>
+      { show && 
+      <UpdateHotel index ={index} updateHotelData={props.updateHotelData} sethotels = {props.sethotels}/>
+      }
     </>
   );
 };

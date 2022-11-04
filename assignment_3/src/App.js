@@ -15,10 +15,26 @@ import UpdateHotels from './components/admin/updateHotels';
 import Users from './components/admin/users';
 import Navigation from './components/navigation';
 import UpdateHotel from './components/admin/updateHotel';
-
+const DUMMY_DATA =[
+  {
+      HotelId:"101",
+      HotelName:"Regency Hotel",
+      HotelAddress:"Gwalior"
+  },
+  {
+      HotelId:"102",
+      HotelName:"Taj Hotel",
+      HotelAddress:"Mumbai"
+  },
+  {
+      HotelId:"103",
+      HotelName:"Oberoy Hotel",
+      HotelAddress:"Mumbai"
+  }
+  ]
 function App() {
   
-  const [hotels, sethotels] = useState([])
+  const [hotels, sethotels] = useState(DUMMY_DATA)
 
   const userDataHandler =(hotel)=>{
     sethotels((prevData)=>{
@@ -43,7 +59,7 @@ function App() {
         <Route path='/hotels' element ={<Hotels hotelData = {hotels} />}/>
         {/* <Route path='/hotels' element ={<Hotels  />}/> */}
 
-        <Route path='/updateHotels' element ={<UpdateHotels updateHotelData = {hotels} />}/>
+        <Route path='/updateHotels' element ={<UpdateHotels updateHotelData = {hotels} sethotels={sethotels}/>}/>
         {/* <Route path='/updateHotels' element ={<UpdateHotels />}/> */}
 
         <Route path='/canceledBooking' element ={<CanceledBooking />}/>

@@ -1,6 +1,7 @@
 import React from "react";
 import Navigation from "../navigation";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const UpdateHotel = (props) => {
   const [NewHotelName, setNewHotelName] = useState("");
@@ -8,18 +9,26 @@ const UpdateHotel = (props) => {
 
   const updateInfo = () => {
     {
-      console.log(props.updateHotelData);
+      //  console.log(props.index)
 
+      
+
+     
       props.updateHotelData[props.index].HotelName = NewHotelName;
       props.updateHotelData[props.index].HotelAddress = NewHotelAddress;
+     
+     
+
+      props.sethotels([...props.updateHotelData]);
     }
   };
 
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
 
       <div className="container">
+        <h2> Update Hotel Data</h2>
         <div className="row">
           <div className="col">
             <label htmlFor="">Enter new Hotel Name</label>
@@ -38,13 +47,15 @@ const UpdateHotel = (props) => {
             />
           </div>
           <div className="col">
-            <div
+            {/* <Link to='/hotels'> */}
+            <button
               style={{ marginTop: "30px" }}
               className="btn btn-primary"
               onClick={updateInfo}
             >
               update data
-            </div>
+            </button>
+            {/* </Link> */}
           </div>
         </div>
       </div>
